@@ -133,5 +133,10 @@ namespace Form_List
             if (Tran) tran = Connect.BeginTransaction();
             return true;
         }
+
+        private void Grid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

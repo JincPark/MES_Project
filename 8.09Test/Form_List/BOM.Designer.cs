@@ -42,6 +42,8 @@ namespace Form_List
             this.button2 = new System.Windows.Forms.Button();
             this.Grid1 = new System.Windows.Forms.DataGridView();
             this.Grid2 = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Grid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grid2)).BeginInit();
             this.SuspendLayout();
@@ -112,6 +114,7 @@ namespace Form_List
             this.Grid1.AllowUserToDeleteRows = false;
             this.Grid1.AllowUserToResizeColumns = false;
             this.Grid1.AllowUserToResizeRows = false;
+            this.Grid1.BackgroundColor = System.Drawing.Color.MistyRose;
             this.Grid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
@@ -121,6 +124,7 @@ namespace Form_List
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Grid1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Grid1.GridColor = System.Drawing.Color.MistyRose;
             this.Grid1.Location = new System.Drawing.Point(100, 250);
             this.Grid1.Name = "Grid1";
             this.Grid1.ReadOnly = true;
@@ -140,6 +144,7 @@ namespace Form_List
             this.Grid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid1.Size = new System.Drawing.Size(750, 150);
             this.Grid1.TabIndex = 7;
+            this.Grid1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid1_CellContentClick);
             // 
             // Grid2
             // 
@@ -147,6 +152,7 @@ namespace Form_List
             this.Grid2.AllowUserToDeleteRows = false;
             this.Grid2.AllowUserToResizeColumns = false;
             this.Grid2.AllowUserToResizeRows = false;
+            this.Grid2.BackgroundColor = System.Drawing.Color.MistyRose;
             this.Grid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
@@ -156,6 +162,7 @@ namespace Form_List
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Grid2.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Grid2.GridColor = System.Drawing.Color.MistyRose;
             this.Grid2.Location = new System.Drawing.Point(100, 475);
             this.Grid2.Name = "Grid2";
             this.Grid2.ReadOnly = true;
@@ -176,12 +183,34 @@ namespace Form_List
             this.Grid2.Size = new System.Drawing.Size(750, 150);
             this.Grid2.TabIndex = 8;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(95, 215);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(119, 28);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "완제품 정보";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(95, 440);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 28);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "자재정보";
+            // 
             // BOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(113)))), ((int)(((byte)(94)))));
             this.ClientSize = new System.Drawing.Size(950, 706);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.Grid2);
             this.Controls.Add(this.Grid1);
             this.Controls.Add(this.button2);
@@ -214,5 +243,7 @@ namespace Form_List
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView Grid1;
         private System.Windows.Forms.DataGridView Grid2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
