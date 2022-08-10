@@ -32,34 +32,34 @@ namespace _8._09Test
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.CompanyName = new System.Windows.Forms.Label();
-            this.UserName = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.P3 = new System.Windows.Forms.Panel();
-            this.P2 = new System.Windows.Forms.Panel();
-            this.P1 = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.pnForm = new System.Windows.Forms.Panel();
             this.btnUserName = new System.Windows.Forms.Button();
             this.btnSet = new System.Windows.Forms.Button();
             this.btnUser = new System.Windows.Forms.Button();
             this.btnCompany = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.UserName = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.P3 = new System.Windows.Forms.Panel();
             this.SANG = new System.Windows.Forms.Button();
             this.JAG = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
+            this.P2 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.P1 = new System.Windows.Forms.Panel();
             this.BOM = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.pnForm = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.P3.SuspendLayout();
@@ -81,24 +81,80 @@ namespace _8._09Test
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1500, 70);
+            this.panel2.Size = new System.Drawing.Size(1200, 70);
             this.panel2.TabIndex = 0;
             // 
             // CompanyName
             // 
             this.CompanyName.AutoSize = true;
             this.CompanyName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CompanyName.Location = new System.Drawing.Point(1058, 28);
+            this.CompanyName.Location = new System.Drawing.Point(644, 28);
             this.CompanyName.Name = "CompanyName";
             this.CompanyName.Size = new System.Drawing.Size(105, 15);
             this.CompanyName.TabIndex = 9;
             this.CompanyName.Text = "CompanyName";
             // 
+            // btnUserName
+            // 
+            this.btnUserName.AutoSize = true;
+            this.btnUserName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUserName.Image = global::_8._09Test.Properties.Resources.premium_icon_profile_4675250;
+            this.btnUserName.Location = new System.Drawing.Point(772, 15);
+            this.btnUserName.Name = "btnUserName";
+            this.btnUserName.Size = new System.Drawing.Size(40, 40);
+            this.btnUserName.TabIndex = 8;
+            this.btnUserName.UseVisualStyleBackColor = true;
+            // 
+            // btnSet
+            // 
+            this.btnSet.AutoSize = true;
+            this.btnSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSet.Image = global::_8._09Test.Properties.Resources.free_icon_settings_545754__1_;
+            this.btnSet.Location = new System.Drawing.Point(964, 16);
+            this.btnSet.Name = "btnSet";
+            this.btnSet.Size = new System.Drawing.Size(40, 40);
+            this.btnSet.TabIndex = 6;
+            this.btnSet.UseVisualStyleBackColor = true;
+            // 
+            // btnUser
+            // 
+            this.btnUser.AutoSize = true;
+            this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUser.Image = global::_8._09Test.Properties.Resources.free_icon_user_8214212;
+            this.btnUser.Location = new System.Drawing.Point(909, 16);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(40, 40);
+            this.btnUser.TabIndex = 5;
+            this.btnUser.UseVisualStyleBackColor = true;
+            // 
+            // btnCompany
+            // 
+            this.btnCompany.AutoSize = true;
+            this.btnCompany.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompany.Image = global::_8._09Test.Properties.Resources.premium_icon_company_2967867;
+            this.btnCompany.Location = new System.Drawing.Point(598, 12);
+            this.btnCompany.Name = "btnCompany";
+            this.btnCompany.Size = new System.Drawing.Size(40, 40);
+            this.btnCompany.TabIndex = 4;
+            this.btnCompany.UseVisualStyleBackColor = true;
+            // 
+            // btnExit
+            // 
+            this.btnExit.AutoSize = true;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Image = global::_8._09Test.Properties.Resources.free_icon_switch_off_7782713__2_;
+            this.btnExit.Location = new System.Drawing.Point(1015, 16);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(40, 40);
+            this.btnExit.TabIndex = 3;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // UserName
             // 
             this.UserName.AutoSize = true;
             this.UserName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.UserName.Location = new System.Drawing.Point(1232, 29);
+            this.UserName.Location = new System.Drawing.Point(818, 29);
             this.UserName.Name = "UserName";
             this.UserName.Size = new System.Drawing.Size(73, 15);
             this.UserName.TabIndex = 2;
@@ -143,103 +199,6 @@ namespace _8._09Test
             this.P3.Name = "P3";
             this.P3.Size = new System.Drawing.Size(250, 80);
             this.P3.TabIndex = 8;
-            // 
-            // P2
-            // 
-            this.P2.Controls.Add(this.button9);
-            this.P2.Controls.Add(this.button10);
-            this.P2.Controls.Add(this.button11);
-            this.P2.Controls.Add(this.button12);
-            this.P2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.P2.Location = new System.Drawing.Point(0, 310);
-            this.P2.Name = "P2";
-            this.P2.Size = new System.Drawing.Size(250, 160);
-            this.P2.TabIndex = 6;
-            // 
-            // P1
-            // 
-            this.P1.Controls.Add(this.BOM);
-            this.P1.Controls.Add(this.button6);
-            this.P1.Controls.Add(this.button5);
-            this.P1.Controls.Add(this.button4);
-            this.P1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.P1.Location = new System.Drawing.Point(0, 100);
-            this.P1.Name = "P1";
-            this.P1.Size = new System.Drawing.Size(250, 160);
-            this.P1.TabIndex = 4;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.BackColor = System.Drawing.Color.Black;
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 778);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1500, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // pnForm
-            // 
-            this.pnForm.Location = new System.Drawing.Point(250, 70);
-            this.pnForm.Name = "pnForm";
-            this.pnForm.Size = new System.Drawing.Size(1250, 706);
-            this.pnForm.TabIndex = 3;
-            // 
-            // btnUserName
-            // 
-            this.btnUserName.AutoSize = true;
-            this.btnUserName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserName.Image = global::_8._09Test.Properties.Resources.premium_icon_profile_4675250;
-            this.btnUserName.Location = new System.Drawing.Point(1186, 15);
-            this.btnUserName.Name = "btnUserName";
-            this.btnUserName.Size = new System.Drawing.Size(40, 40);
-            this.btnUserName.TabIndex = 8;
-            this.btnUserName.UseVisualStyleBackColor = true;
-            // 
-            // btnSet
-            // 
-            this.btnSet.AutoSize = true;
-            this.btnSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSet.Image = global::_8._09Test.Properties.Resources.free_icon_settings_545754__1_;
-            this.btnSet.Location = new System.Drawing.Point(1378, 16);
-            this.btnSet.Name = "btnSet";
-            this.btnSet.Size = new System.Drawing.Size(40, 40);
-            this.btnSet.TabIndex = 6;
-            this.btnSet.UseVisualStyleBackColor = true;
-            // 
-            // btnUser
-            // 
-            this.btnUser.AutoSize = true;
-            this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUser.Image = global::_8._09Test.Properties.Resources.free_icon_user_8214212;
-            this.btnUser.Location = new System.Drawing.Point(1323, 16);
-            this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(40, 40);
-            this.btnUser.TabIndex = 5;
-            this.btnUser.UseVisualStyleBackColor = true;
-            // 
-            // btnCompany
-            // 
-            this.btnCompany.AutoSize = true;
-            this.btnCompany.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCompany.Image = global::_8._09Test.Properties.Resources.premium_icon_company_2967867;
-            this.btnCompany.Location = new System.Drawing.Point(1012, 12);
-            this.btnCompany.Name = "btnCompany";
-            this.btnCompany.Size = new System.Drawing.Size(40, 40);
-            this.btnCompany.TabIndex = 4;
-            this.btnCompany.UseVisualStyleBackColor = true;
-            // 
-            // btnExit
-            // 
-            this.btnExit.AutoSize = true;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Image = global::_8._09Test.Properties.Resources.free_icon_switch_off_7782713__2_;
-            this.btnExit.Location = new System.Drawing.Point(1429, 16);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(40, 40);
-            this.btnExit.TabIndex = 3;
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // SANG
             // 
@@ -302,6 +261,18 @@ namespace _8._09Test
             this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // P2
+            // 
+            this.P2.Controls.Add(this.button9);
+            this.P2.Controls.Add(this.button10);
+            this.P2.Controls.Add(this.button11);
+            this.P2.Controls.Add(this.button12);
+            this.P2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.P2.Location = new System.Drawing.Point(0, 310);
+            this.P2.Name = "P2";
+            this.P2.Size = new System.Drawing.Size(250, 160);
+            this.P2.TabIndex = 6;
             // 
             // button9
             // 
@@ -402,6 +373,18 @@ namespace _8._09Test
             this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // P1
+            // 
+            this.P1.Controls.Add(this.BOM);
+            this.P1.Controls.Add(this.button6);
+            this.P1.Controls.Add(this.button5);
+            this.P1.Controls.Add(this.button4);
+            this.P1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.P1.Location = new System.Drawing.Point(0, 100);
+            this.P1.Name = "P1";
+            this.P1.Size = new System.Drawing.Size(250, 160);
+            this.P1.TabIndex = 4;
             // 
             // BOM
             // 
@@ -523,12 +506,29 @@ namespace _8._09Test
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button2.UseVisualStyleBackColor = false;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.BackColor = System.Drawing.Color.Black;
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 778);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1200, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // pnForm
+            // 
+            this.pnForm.Location = new System.Drawing.Point(250, 70);
+            this.pnForm.Name = "pnForm";
+            this.pnForm.Size = new System.Drawing.Size(950, 706);
+            this.pnForm.TabIndex = 3;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(233)))), ((int)(((byte)(228)))));
-            this.ClientSize = new System.Drawing.Size(1500, 800);
+            this.ClientSize = new System.Drawing.Size(1200, 800);
             this.Controls.Add(this.pnForm);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel2);

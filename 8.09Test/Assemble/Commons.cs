@@ -9,7 +9,7 @@ namespace Assemble
 {
     public class Commons
     {
-        MySqlConnection conn = new MySqlConnection("Server= utbnl.synology.me;Port = 3307; Database=MESproject;Uid=hontoni;Pwd=!@QWaszx34;");
+        public static string conn = "Server= utbnl.synology.me;Port = 3307; Database=MESproject;Uid=hontoni;Pwd=!@QWaszx34;";
 
 
 

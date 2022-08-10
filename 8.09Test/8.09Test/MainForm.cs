@@ -160,5 +160,6 @@ namespace _8._09Test
             // 폼 Show
             FormMDI.Show();
         }
+
     }
 }

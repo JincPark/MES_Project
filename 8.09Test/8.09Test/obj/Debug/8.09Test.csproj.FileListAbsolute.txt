@@ -68,7 +68,6 @@ C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\bin\Debug\Syste
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\obj\Debug\8.09Test.csproj.AssemblyReference.cache
-C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\obj\Debug\Form_List.BOM.resources
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\obj\Debug\_8._09Test.MainForm.resources
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\obj\Debug\_8._09Test.Properties.Resources.resources
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\obj\Debug\8.09Test.csproj.GenerateResource.cache
@@ -76,3 +75,5 @@ C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\obj\Debug\8.09T
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\obj\Debug\8.09Test.csproj.CopyComplete
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\obj\Debug\8.09Test.exe
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\obj\Debug\8.09Test.pdb
+C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\bin\Debug\Assemble.dll.config
+C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\bin\Debug\Form_List.dll.config
