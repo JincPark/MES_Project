@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8EF87C3A-8132-4575-8EF0-3E4B05B20286}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>_8._09Test</RootNamespace>
+    <AssemblyName>8.09Test</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assemble">
+      <HintPath>..\Assemble\bin\Debug\Assemble.dll</HintPath>
+    </Reference>
+    <Reference Include="Form_List">
+      <HintPath>..\Form_List\bin\Debug\Form_List.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BOM.Designer.cs">
+      <DependentUpon>BOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BOM.resx">
+      <DependentUpon>BOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-company-29678672.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-profile-46752501.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-user-82142121.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-settings-545754 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-switch-off-7782713 %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-empty-folder-2739782.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-open-folder-2492490.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-boxes-2250265.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-handshake-1786971.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-warehouse-3061153.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-alter-5635910.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-boxes-1044183.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-boxes-1044182.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-stock-6133323.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-warehouse-6135229.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-finger-of-a-hand-pointing-to-right-direction-25628.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-homework-1171932.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-production-3052479.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-planning-5341573.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-stack-of-square-papers-29835.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-home-263115.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

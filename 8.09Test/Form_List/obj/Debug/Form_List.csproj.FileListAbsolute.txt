@@ -1,0 +1,10 @@
+C:\Users\jin\Desktop\8.09Test\Form_List\bin\Debug\Form_List.dll
+C:\Users\jin\Desktop\8.09Test\Form_List\bin\Debug\Form_List.pdb
+C:\Users\jin\Desktop\8.09Test\Form_List\obj\Debug\Form_List.csproj.AssemblyReference.cache
+C:\Users\jin\Desktop\8.09Test\Form_List\obj\Debug\Form_List.csproj.CoreCompileInputs.cache
+C:\Users\jin\Desktop\8.09Test\Form_List\obj\Debug\Form_List.dll
+C:\Users\jin\Desktop\8.09Test\Form_List\obj\Debug\Form_List.pdb
+C:\Users\jin\Desktop\8.09Test\Form_List\obj\Debug\Form_List.BOM.resources
+C:\Users\jin\Desktop\8.09Test\Form_List\obj\Debug\Form_List.csproj.GenerateResource.cache
+C:\Users\jin\Desktop\8.09Test\Form_List\obj\Debug\Form_List.SANG.resources
+C:\Users\jin\Desktop\8.09Test\Form_List\obj\Debug\Form_List.JAG.resources
