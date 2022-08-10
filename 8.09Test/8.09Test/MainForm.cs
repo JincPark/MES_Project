@@ -43,20 +43,18 @@ namespace _8._09Test
         private void button3_Click(object sender, EventArgs e) // MES기준정보 버튼
         {
             P1.Visible = !P1.Visible;                       // MES기준정보 하단버튼패널 활성화 및 비활성화
-            if(P1.Visible) menuButtonColor((Button)sender); // 활성화시 버튼 색상변경
+            
         }
 
         private void button8_Click(object sender, EventArgs e) // 영업관리 버튼
         {
             P2.Visible = !P2.Visible;                       // 영업관리 하단버튼패널 활성화 및 비활성화
-            if (P2.Visible) menuButtonColor((Button)sender);// 활성화시 버튼 색상변경
         }
 
         private void button13_Click(object sender, EventArgs e) // 생산관리 버튼
         {
 
             P3.Visible = !P3.Visible;                       // 생산관리 하단버튼패널 활성화 및 비활성화
-            if (P3.Visible) menuButtonColor((Button)sender);// 활성화시 버튼 색상변경
         }
 
         private void Form1_Load(object sender, EventArgs e) // 메인 폼 로드
