@@ -46,3 +46,4 @@ C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\Form_List\obj\Debug\Form
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\Form_List\bin\Debug\Assemble.dll
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\Form_List\bin\Debug\Assemble.pdb
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\Form_List\bin\Debug\Assemble.dll.config
+C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\Form_List\obj\Debug\Form_List.Pop_WorkOrder.resources

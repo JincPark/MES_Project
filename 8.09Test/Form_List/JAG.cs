@@ -16,5 +16,14 @@ namespace Form_List
         {
             InitializeComponent();
         }
+
+
+        // 작업지시등록에서 조회 버튼 누르면 품목 검색할 수 있는 보조창 팝업
+        private void btSearch_Click(object sender, EventArgs e)
+        {
+            Pop_WorkOrder order = new Pop_WorkOrder();
+ 
+            order.ShowDialog();                         
+        }
     }
 }

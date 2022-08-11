@@ -89,6 +89,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pop_WorkOrder.cs" />
+    <Compile Include="Pop_WorkOrder.designer.cs">
+      <DependentUpon>Pop_WorkOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="SANG.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +115,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Pop_WorkOrder.resx">
+      <DependentUpon>Pop_WorkOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SANG.resx">
       <DependentUpon>SANG.cs</DependentUpon>
     </EmbeddedResource>
