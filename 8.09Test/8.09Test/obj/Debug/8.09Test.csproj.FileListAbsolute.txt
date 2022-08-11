@@ -40,7 +40,6 @@ C:\Users\jin\Desktop\8.09Test\8.09Test\obj\Debug\Form_List.BOM.resources
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\bin\Debug\8.09Test.exe.config
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\bin\Debug\8.09Test.exe
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\bin\Debug\8.09Test.pdb
-C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\bin\Debug\Assemble.dll
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\bin\Debug\Form_List.dll
 C:\Users\jin\AndroidStudioProjects\MES_Project\8.09Test\8.09Test\bin\Debug\Google.Protobuf.dll
