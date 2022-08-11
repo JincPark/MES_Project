@@ -36,11 +36,12 @@ namespace Form_List
             dtGrid1.Columns.Add("icode", typeof(string));    // 품목코드
             dtGrid1.Columns.Add("name",  typeof(string));    // 품목명
             dtGrid1.Columns.Add("bigo",  typeof(string));    // 비고
+
             dtGrid2.Columns.Add("icode", typeof(string));    // 품목코드
-            dtGrid2.Columns.Add("name",  typeof(string));    // 품목명
-            dtGrid2.Columns.Add("ccode", typeof(string));    // 자재코드
-            dtGrid2.Columns.Add("cname", typeof(string));    // 자재명
-            dtGrid2.Columns.Add("cbigo", typeof(string));    // 비고
+            dtGrid2.Columns.Add("iname",  typeof(string));    // 품목명
+            dtGrid2.Columns.Add("mcode", typeof(string));    // 자재코드
+            dtGrid2.Columns.Add("mname", typeof(string));    // 자재명
+            dtGrid2.Columns.Add("mbi", typeof(string));    // 비고
 
             // 빈 컬럼 테이블 그리드에 매핑.
             Grid1.DataSource = dtGrid1;
@@ -134,9 +135,40 @@ namespace Form_List
             return true;
         }
 
-        private void Grid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Grid1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //((DataTable)Grid2.DataSource).Rows.Clear();
+            string Pacode = Grid1.CurrentRow.Cells[0].Value.ToString();
+            if (!DBHelper(false)) return;
 
+            try
+            {
+                // Adapter 에 SQL 프로시져 이름과 접속 정보 등록.
+                Adapter = new MySqlDataAdapter("BM_BOM_S2", Connect);
+                Adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                Adapter.SelectCommand.Parameters.AddWithValue("ICODE", Pacode);
+
+                //Adapter.SelectCommand.Parameters.AddWithValue("LANG", "KO");
+                //// 데이터베이스 처리 시 C#으로 반환할 값을 담는 변수.
+                //Adapter.SelectCommand.Parameters.AddWithValue("RS_CODE", "").Direction = ParameterDirection.Output;
+                //Adapter.SelectCommand.Parameters.AddWithValue("RS_MSG", "").Direction = ParameterDirection.Output;
+
+                // Adapter 실행.
+                DataTable dtTemp2 = new DataTable();
+                Adapter.Fill(dtTemp2);
+                // 결과값을 그리드뷰에 표현.
+                Grid2.DataSource = dtTemp2;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                Connect.Close();
+            }
         }
     }
 }
