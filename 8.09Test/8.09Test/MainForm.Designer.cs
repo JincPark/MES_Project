@@ -32,34 +32,34 @@ namespace _8._09Test
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.CompanyName = new System.Windows.Forms.Label();
+            this.UserName = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.P3 = new System.Windows.Forms.Panel();
+            this.P2 = new System.Windows.Forms.Panel();
+            this.P1 = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.pnForm = new System.Windows.Forms.Panel();
             this.btnUserName = new System.Windows.Forms.Button();
             this.btnSet = new System.Windows.Forms.Button();
             this.btnUser = new System.Windows.Forms.Button();
             this.btnCompany = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.UserName = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.P3 = new System.Windows.Forms.Panel();
             this.SANG = new System.Windows.Forms.Button();
             this.JAG = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.P2 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.P1 = new System.Windows.Forms.Panel();
             this.BOM = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.ItemMaster = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.pnForm = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.P3.SuspendLayout();
@@ -93,6 +93,82 @@ namespace _8._09Test
             this.CompanyName.Size = new System.Drawing.Size(105, 15);
             this.CompanyName.TabIndex = 9;
             this.CompanyName.Text = "CompanyName";
+            // 
+            // UserName
+            // 
+            this.UserName.AutoSize = true;
+            this.UserName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.UserName.Location = new System.Drawing.Point(818, 29);
+            this.UserName.Name = "UserName";
+            this.UserName.Size = new System.Drawing.Size(73, 15);
+            this.UserName.TabIndex = 2;
+            this.UserName.Text = "UserName";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(113)))), ((int)(((byte)(73)))));
+            this.panel1.Controls.Add(this.P3);
+            this.panel1.Controls.Add(this.button13);
+            this.panel1.Controls.Add(this.P2);
+            this.panel1.Controls.Add(this.button8);
+            this.panel1.Controls.Add(this.P1);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Location = new System.Drawing.Point(0, 70);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(250, 730);
+            this.panel1.TabIndex = 0;
+            // 
+            // P3
+            // 
+            this.P3.Controls.Add(this.SANG);
+            this.P3.Controls.Add(this.JAG);
+            this.P3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.P3.Location = new System.Drawing.Point(0, 520);
+            this.P3.Name = "P3";
+            this.P3.Size = new System.Drawing.Size(250, 80);
+            this.P3.TabIndex = 8;
+            // 
+            // P2
+            // 
+            this.P2.Controls.Add(this.button9);
+            this.P2.Controls.Add(this.button10);
+            this.P2.Controls.Add(this.button11);
+            this.P2.Controls.Add(this.button12);
+            this.P2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.P2.Location = new System.Drawing.Point(0, 310);
+            this.P2.Name = "P2";
+            this.P2.Size = new System.Drawing.Size(250, 160);
+            this.P2.TabIndex = 6;
+            // 
+            // P1
+            // 
+            this.P1.Controls.Add(this.BOM);
+            this.P1.Controls.Add(this.button6);
+            this.P1.Controls.Add(this.ItemMaster);
+            this.P1.Controls.Add(this.button4);
+            this.P1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.P1.Location = new System.Drawing.Point(0, 100);
+            this.P1.Name = "P1";
+            this.P1.Size = new System.Drawing.Size(250, 160);
+            this.P1.TabIndex = 4;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.BackColor = System.Drawing.Color.Black;
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 778);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1200, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // pnForm
+            // 
+            this.pnForm.Location = new System.Drawing.Point(250, 70);
+            this.pnForm.Name = "pnForm";
+            this.pnForm.Size = new System.Drawing.Size(950, 706);
+            this.pnForm.TabIndex = 3;
             // 
             // btnUserName
             // 
@@ -150,16 +226,6 @@ namespace _8._09Test
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // UserName
-            // 
-            this.UserName.AutoSize = true;
-            this.UserName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.UserName.Location = new System.Drawing.Point(818, 29);
-            this.UserName.Name = "UserName";
-            this.UserName.Size = new System.Drawing.Size(73, 15);
-            this.UserName.TabIndex = 2;
-            this.UserName.Text = "UserName";
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Black;
@@ -168,37 +234,12 @@ namespace _8._09Test
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Image = global::_8._09Test.Properties.Resources.크기조절;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(256, 70);
             this.button1.TabIndex = 1;
-            this.button1.Text = "로고";
             this.button1.UseVisualStyleBackColor = false;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(113)))), ((int)(((byte)(73)))));
-            this.panel1.Controls.Add(this.P3);
-            this.panel1.Controls.Add(this.button13);
-            this.panel1.Controls.Add(this.P2);
-            this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.P1);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(0, 70);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 730);
-            this.panel1.TabIndex = 0;
-            // 
-            // P3
-            // 
-            this.P3.Controls.Add(this.SANG);
-            this.P3.Controls.Add(this.JAG);
-            this.P3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.P3.Location = new System.Drawing.Point(0, 520);
-            this.P3.Name = "P3";
-            this.P3.Size = new System.Drawing.Size(250, 80);
-            this.P3.TabIndex = 8;
             // 
             // SANG
             // 
@@ -261,18 +302,6 @@ namespace _8._09Test
             this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // P2
-            // 
-            this.P2.Controls.Add(this.button9);
-            this.P2.Controls.Add(this.button10);
-            this.P2.Controls.Add(this.button11);
-            this.P2.Controls.Add(this.button12);
-            this.P2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.P2.Location = new System.Drawing.Point(0, 310);
-            this.P2.Name = "P2";
-            this.P2.Size = new System.Drawing.Size(250, 160);
-            this.P2.TabIndex = 6;
             // 
             // button9
             // 
@@ -374,18 +403,6 @@ namespace _8._09Test
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // P1
-            // 
-            this.P1.Controls.Add(this.BOM);
-            this.P1.Controls.Add(this.button6);
-            this.P1.Controls.Add(this.button5);
-            this.P1.Controls.Add(this.button4);
-            this.P1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.P1.Location = new System.Drawing.Point(0, 100);
-            this.P1.Name = "P1";
-            this.P1.Size = new System.Drawing.Size(250, 160);
-            this.P1.TabIndex = 4;
-            // 
             // BOM
             // 
             this.BOM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(202)))), ((int)(((byte)(186)))));
@@ -427,25 +444,26 @@ namespace _8._09Test
             this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button6.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // ItemMaster
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(202)))), ((int)(((byte)(186)))));
-            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("한컴 고딕", 10F, System.Drawing.FontStyle.Bold);
-            this.button5.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.button5.Image = global::_8._09Test.Properties.Resources.free_icon_boxes_2250265;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(0, 40);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(250, 40);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "품목 정보 관리";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button5.UseVisualStyleBackColor = false;
+            this.ItemMaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(202)))), ((int)(((byte)(186)))));
+            this.ItemMaster.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ItemMaster.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ItemMaster.FlatAppearance.BorderSize = 0;
+            this.ItemMaster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ItemMaster.Font = new System.Drawing.Font("한컴 고딕", 10F, System.Drawing.FontStyle.Bold);
+            this.ItemMaster.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.ItemMaster.Image = global::_8._09Test.Properties.Resources.free_icon_boxes_2250265;
+            this.ItemMaster.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ItemMaster.Location = new System.Drawing.Point(0, 40);
+            this.ItemMaster.Name = "ItemMaster";
+            this.ItemMaster.Size = new System.Drawing.Size(250, 40);
+            this.ItemMaster.TabIndex = 4;
+            this.ItemMaster.Text = "품목 정보 관리";
+            this.ItemMaster.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ItemMaster.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ItemMaster.UseVisualStyleBackColor = false;
+            this.ItemMaster.Click += new System.EventHandler(this.ItemMaster_Click);
             // 
             // button4
             // 
@@ -506,23 +524,6 @@ namespace _8._09Test
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.BackColor = System.Drawing.Color.Black;
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 778);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1200, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // pnForm
-            // 
-            this.pnForm.Location = new System.Drawing.Point(250, 70);
-            this.pnForm.Name = "pnForm";
-            this.pnForm.Size = new System.Drawing.Size(950, 706);
-            this.pnForm.TabIndex = 3;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -559,7 +560,7 @@ namespace _8._09Test
         private System.Windows.Forms.Panel P1;
         private System.Windows.Forms.Button BOM;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button ItemMaster;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;

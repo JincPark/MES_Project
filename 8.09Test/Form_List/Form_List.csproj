@@ -89,7 +89,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pop_WorkOrder.cs" />
+    <Compile Include="ItemMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemMaster.Designer.cs">
+      <DependentUpon>ItemMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pop_WorkOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Pop_WorkOrder.designer.cs">
       <DependentUpon>Pop_WorkOrder.cs</DependentUpon>
     </Compile>
@@ -115,6 +123,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ItemMaster.resx">
+      <DependentUpon>ItemMaster.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pop_WorkOrder.resx">
       <DependentUpon>Pop_WorkOrder.cs</DependentUpon>
     </EmbeddedResource>

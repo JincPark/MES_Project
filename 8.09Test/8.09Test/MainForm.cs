@@ -8,13 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-
+using Assemble;
 namespace _8._09Test
 {
     public partial class MainForm : Form
     {
         public MainForm()
         {
+            LogIn FormLog = new LogIn();      // 로그인 화면 만들기
+            FormLog.ShowDialog();             // 로그인 창만 띄움
+            if (Commons.cLogInSF != true)
+            {
+
+                Environment.Exit(0);
+            }
+
             InitializeComponent();
         }
 
@@ -161,5 +169,11 @@ namespace _8._09Test
             FormMDI.Show();
         }
 
+        private void ItemMaster_Click(object sender, EventArgs e)
+        {
+            subMenuButtonColor((Button)sender);             // 서브메뉴버튼색 변경
+
+            OpenForm((Button)sender);
+        }
     }
 }

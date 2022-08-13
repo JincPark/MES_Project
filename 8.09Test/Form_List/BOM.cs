@@ -92,6 +92,7 @@ namespace Form_List
                 // 사용자 정보 조회
 
                 // Adapter 에 SQL 프로시져 이름과 접속 정보 등록.
+                //Adapter = new MySqlDataAdapter("BM_BOM_S1", Connect);
                 Adapter = new MySqlDataAdapter("BM_BOM_S1", Connect);
                 Adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
