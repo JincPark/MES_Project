@@ -63,13 +63,13 @@ namespace Form_List
             //Grid1.Columns[1].Width = 200;
             //Grid1.Columns[2].Width = 210;
 
-            // 콤보박스 값 초기화
-            cbItemType.DisplayMember = "Display";
-            cbItemType.ValueMember = "Value";
+            //// 콤보박스 값 초기화
+            //cbItemType.DisplayMember = "Display";
+            //cbItemType.ValueMember = "Value";
 
-            cbItemType.Items.Add(new { Display = "선택", Value = "" });
-            cbItemType.Items.Add(new { Display = "완제품", Value = "FERT" });
-            cbItemType.Items.Add(new { Display = "자재", Value = "ROH" });
+            //cbItemType.Items.Add(new { Display = "선택", Value = "" });
+            //cbItemType.Items.Add(new { Display = "완제품", Value = "FERT" });
+            //cbItemType.Items.Add(new { Display = "자재", Value = "ROH" });
 
             // ********************* 부서 정보 콤보박스 셋팅. ******************
             // 시스템 코드(공통코드)
@@ -77,10 +77,18 @@ namespace Form_List
             // 일반적으로 마스터 데이터 보다관리할 내용이 적은 항목들을 공토으로 관리하며 
             // 공통코드 관리테이블에서 일괄적으로 관리한다.
             Commons Com = new Commons();
-            DataTable dtTemp = Com.Standard_Code();
+            DataTable dtTemp = Com.Combo1();
             cbItem.DataSource = dtTemp;
             cbItem.ValueMember = "cbItemCode";
             cbItem.DisplayMember = "cbItemName";
+
+            Commons Com2 = new Commons();
+
+            DataTable dtTemp1 = Com2.Combo2();
+            cbItemType.DataSource = dtTemp1;
+            cbItemType.ValueMember = "ValueType";
+            cbItemType.DisplayMember = "DPType";
+
             Inquire();
         }
         public void Inquire()
@@ -96,9 +104,9 @@ namespace Form_List
                 // Adapter 에 SQL 프로시져 이름과 접속 정보 등록.
                 Adapter = new MySqlDataAdapter("ItemMaster_Select_01", Connect);
                 Adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                Adapter.SelectCommand.Parameters.AddWithValue("@ItemType", cbItemType.SelectedValue);
-                Adapter.SelectCommand.Parameters.AddWithValue("@ItemCode",cbItem.SelectedValue);
-                Adapter.SelectCommand.Parameters.AddWithValue("@ItemName", txtItemName.Text);
+                Adapter.SelectCommand.Parameters.AddWithValue("Type", cbItemType.SelectedValue) ;
+                Adapter.SelectCommand.Parameters.AddWithValue("Code", cbItem.SelectedValue);
+                Adapter.SelectCommand.Parameters.AddWithValue("Name", txtItemName.Text);
 
                 //// 데이터베이스 처리 시 C#으로 반환할 값을 담는 변수.
                 //Adapter.SelectCommand.Parameters.AddWithValue("RS_CODE", "").Direction = ParameterDirection.Output;
@@ -142,6 +150,12 @@ namespace Form_List
         private void btSearch_Click(object sender, EventArgs e)
         {
             Inquire();
+        }
+
+        private void btCreate_Click(object sender, EventArgs e)
+        {
+            ItemMaster_POP AddPop = new ItemMaster_POP();
+            AddPop.Show();
         }
     }
     

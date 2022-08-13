@@ -47,21 +47,24 @@ namespace Form_List
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(44, 40);
+            this.label1.Location = new System.Drawing.Point(50, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(179, 37);
+            this.label1.Size = new System.Drawing.Size(218, 45);
             this.label1.TabIndex = 1;
             this.label1.Text = "품목정보관리";
             // 
             // Grid1
             // 
+            this.Grid1.AllowUserToAddRows = false;
+            this.Grid1.AllowUserToDeleteRows = false;
+            this.Grid1.BackgroundColor = System.Drawing.SystemColors.Info;
             this.Grid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Grid1.Location = new System.Drawing.Point(51, 177);
+            this.Grid1.Location = new System.Drawing.Point(58, 221);
             this.Grid1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Grid1.Name = "Grid1";
             this.Grid1.RowHeadersWidth = 51;
             this.Grid1.RowTemplate.Height = 27;
-            this.Grid1.Size = new System.Drawing.Size(726, 341);
+            this.Grid1.Size = new System.Drawing.Size(830, 426);
             this.Grid1.TabIndex = 2;
             // 
             // groupBox1
@@ -75,66 +78,67 @@ namespace Form_List
             this.groupBox1.Controls.Add(this.btSearch);
             this.groupBox1.Controls.Add(this.txtItemName);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox1.Location = new System.Drawing.Point(51, 94);
+            this.groupBox1.Location = new System.Drawing.Point(58, 118);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(726, 58);
+            this.groupBox1.Size = new System.Drawing.Size(830, 72);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
             // cbItem
             // 
             this.cbItem.FormattingEnabled = true;
-            this.cbItem.Location = new System.Drawing.Point(252, 26);
+            this.cbItem.Location = new System.Drawing.Point(288, 32);
             this.cbItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbItem.Name = "cbItem";
-            this.cbItem.Size = new System.Drawing.Size(106, 20);
+            this.cbItem.Size = new System.Drawing.Size(121, 23);
             this.cbItem.TabIndex = 8;
             // 
             // cbItemType
             // 
             this.cbItemType.FormattingEnabled = true;
-            this.cbItemType.Location = new System.Drawing.Point(87, 26);
+            this.cbItemType.Location = new System.Drawing.Point(99, 32);
             this.cbItemType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbItemType.Name = "cbItemType";
-            this.cbItemType.Size = new System.Drawing.Size(106, 20);
+            this.cbItemType.Size = new System.Drawing.Size(121, 23);
             this.cbItemType.TabIndex = 7;
             // 
             // btCreate
             // 
-            this.btCreate.Location = new System.Drawing.Point(569, 24);
+            this.btCreate.Location = new System.Drawing.Point(650, 30);
             this.btCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btCreate.Name = "btCreate";
-            this.btCreate.Size = new System.Drawing.Size(66, 18);
+            this.btCreate.Size = new System.Drawing.Size(75, 22);
             this.btCreate.TabIndex = 6;
             this.btCreate.Text = "등록";
             this.btCreate.UseVisualStyleBackColor = true;
+            this.btCreate.Click += new System.EventHandler(this.btCreate_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 30);
+            this.label2.Location = new System.Drawing.Point(26, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.Size = new System.Drawing.Size(67, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "품목구분";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(213, 30);
+            this.label3.Location = new System.Drawing.Point(243, 38);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.Size = new System.Drawing.Size(37, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "품목";
             // 
             // btSearch
             // 
-            this.btSearch.Location = new System.Drawing.Point(498, 24);
+            this.btSearch.Location = new System.Drawing.Point(569, 30);
             this.btSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btSearch.Name = "btSearch";
-            this.btSearch.Size = new System.Drawing.Size(66, 18);
+            this.btSearch.Size = new System.Drawing.Size(75, 22);
             this.btSearch.TabIndex = 5;
             this.btSearch.Text = "조회";
             this.btSearch.UseVisualStyleBackColor = true;
@@ -142,18 +146,18 @@ namespace Form_List
             // 
             // txtItemName
             // 
-            this.txtItemName.Location = new System.Drawing.Point(363, 25);
+            this.txtItemName.Location = new System.Drawing.Point(415, 31);
             this.txtItemName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(88, 21);
+            this.txtItemName.Size = new System.Drawing.Size(100, 25);
             this.txtItemName.TabIndex = 4;
             // 
             // ItemMaster
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(113)))), ((int)(((byte)(94)))));
-            this.ClientSize = new System.Drawing.Size(831, 565);
+            this.ClientSize = new System.Drawing.Size(950, 706);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Grid1);
             this.Controls.Add(this.label1);
