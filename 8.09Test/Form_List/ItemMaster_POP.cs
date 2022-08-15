@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Assemble;
 using MySql.Data.MySqlClient;
+
 
 namespace Form_List
 {
@@ -53,9 +55,16 @@ namespace Form_List
             Grid.Columns[0].HeaderText = "품목구분";
             Grid.Columns[1].HeaderText = "품목코드";
             Grid.Columns[2].HeaderText = "품목명";
-            Grid.Columns[3].HeaderText = "기본단위";
-            Grid.Columns[3].HeaderText = "비고";
+            Grid.Columns[3].HeaderText = "단위";
+            Grid.Columns[4].HeaderText = "비고";
 
+
+            // 컬럼의 폭 지정
+            Grid.Columns[0].Width = 90;
+            Grid.Columns[1].Width = 90;
+            Grid.Columns[2].Width = 110;
+            Grid.Columns[3].Width = 70;
+            Grid.Columns[4].Width = 188;
             //// 컬럼의 폭 지정
             //Grid1.Columns[0].Width = 200;
             //Grid1.Columns[1].Width = 200;
@@ -106,6 +115,13 @@ namespace Form_List
                     MessageBox.Show($"{warningMsg}이/가 빠졌습니다.");
                     return;
                 }
+                foreach(DataGridViewRow row in Grid.Rows)
+                {
+                    if (row.Cells[1].Value.ToString() == txtItemCode.Text)
+                    {
+                        throw new Exception("이미 해당하는 품목코드가 존재합니다.");
+                    }
+                }
                 string strA = cbType.SelectedValue.ToString();
                 string strB = txtItemCode.Text;
                 string strC = txtItemName.Text;
@@ -135,8 +151,34 @@ namespace Form_List
 
             try
             {
-                foreach(DataGridViewRow row in Grid.Rows)
+                if (Grid.Rows.Count == 0) return;
+
+                // Adapter 에 SQL 프로시져 이름과 접속 정보 등록.
+                Adapter = new MySqlDataAdapter("ItemMaster_Select_02_Check", Connect);
+                Adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                //Adapter 실행.
+                DataTable dtTemp2 = new DataTable();
+                Adapter.Fill(dtTemp2);
+                //dtTemp2
+                
+
+
+
+
+
+
+                foreach (DataGridViewRow row in Grid.Rows)
                 {
+                    string checkRow = row.Cells[1].Value.ToString();
+                    bool contains = dtTemp2.AsEnumerable().Where(c => c.Field<string>("ItemCode").Equals(checkRow)).Count() > 0;
+                    //bool contains = dtTemp2.AsEnumerable().Any(row => checkRow == row.Field<String>("ItemCode"));
+                    if (contains)
+                    {
+                        throw new Exception($"{checkRow} 은/는 이미 존재하는 품목코드 입니다.");
+                    }
+
+
                     cmd.CommandText = "ItemMaster_Insert_01";
                     cmd.Parameters.AddWithValue("TYP",     row.Cells[0].Value.ToString());
                     cmd.Parameters.AddWithValue("COD",     row.Cells[1].Value.ToString());
@@ -202,6 +244,13 @@ namespace Form_List
             }
             if (Tran) tran = Connect.BeginTransaction();
             return true;
+        }
+
+        private void btDelete_Click(object sender, EventArgs e)
+        {
+            if (Grid.Rows.Count == 0) return;
+            DataTable dtTemp = (DataTable)Grid.DataSource;
+            dtTemp.Rows.RemoveAt(Grid.CurrentRow.Index);
         }
     }
 }

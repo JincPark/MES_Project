@@ -41,8 +41,6 @@ namespace Form_List
             dtGrid1.Columns.Add("Note",         typeof(string));    // 비고
             dtGrid1.Columns.Add("Maker",        typeof(string));    // 등록자
             dtGrid1.Columns.Add("MakeDate",     typeof(string));    // 등록일시
-            dtGrid1.Columns.Add("Editor",       typeof(string));    // 수정자
-            dtGrid1.Columns.Add("Editdate",     typeof(string));    // 수정일시
 
             // 빈 컬럼 테이블 그리드에 매핑.
             Grid1.DataSource = dtGrid1;
@@ -51,17 +49,19 @@ namespace Form_List
             Grid1.Columns[0].HeaderText = "품목구분";
             Grid1.Columns[1].HeaderText = "품목코드";
             Grid1.Columns[2].HeaderText = "품목명";
-            Grid1.Columns[3].HeaderText = "기본단위";
+            Grid1.Columns[3].HeaderText = "단위";
             Grid1.Columns[4].HeaderText = "비고";
             Grid1.Columns[5].HeaderText = "등록자";
             Grid1.Columns[6].HeaderText = "등록일시";
-            Grid1.Columns[7].HeaderText = "수정자";
-            Grid1.Columns[8].HeaderText = "수정일시";
 
-            //// 컬럼의 폭 지정
-            //Grid1.Columns[0].Width = 200;
-            //Grid1.Columns[1].Width = 200;
-            //Grid1.Columns[2].Width = 210;
+            // 컬럼의 폭 지정
+            Grid1.Columns[0].Width = 90;
+            Grid1.Columns[1].Width = 90;
+            Grid1.Columns[2].Width = 110;
+            Grid1.Columns[3].Width = 70;
+            Grid1.Columns[4].Width = 188;
+            Grid1.Columns[5].Width = 80;
+            Grid1.Columns[6].Width = 100;
 
             //// 콤보박스 값 초기화
             //cbItemType.DisplayMember = "Display";
@@ -155,7 +155,38 @@ namespace Form_List
         private void btCreate_Click(object sender, EventArgs e)
         {
             ItemMaster_POP AddPop = new ItemMaster_POP();
-            AddPop.Show();
+            AddPop.ShowDialog();
+            Inquire();
+        }
+
+        private void btDelete_Click(object sender, EventArgs e)
+        {
+            if (!DBHelper(true)) return;
+            cmd = new MySqlCommand
+            {
+                Transaction = tran,
+                Connection = Connect,
+                CommandType = CommandType.StoredProcedure
+            };
+            try
+            {
+
+            cmd.CommandText = "ItemMaster_Delete_01";
+                cmd.Parameters.AddWithValue("PCODE", Grid1.CurrentRow.Cells[1].Value.ToString()) ;
+            cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            tran.Commit();
+            }
+            catch(Exception ex)
+            {
+                tran.Rollback();
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                Connect.Close();
+            }
+            Inquire();
         }
     }
     

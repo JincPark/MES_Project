@@ -29,6 +29,8 @@ namespace Form_List
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.Grid1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -39,6 +41,7 @@ namespace Form_List
             this.label3 = new System.Windows.Forms.Label();
             this.btSearch = new System.Windows.Forms.Button();
             this.txtItemName = new System.Windows.Forms.TextBox();
+            this.btDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Grid1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -58,13 +61,35 @@ namespace Form_List
             this.Grid1.AllowUserToAddRows = false;
             this.Grid1.AllowUserToDeleteRows = false;
             this.Grid1.BackgroundColor = System.Drawing.SystemColors.Info;
+            this.Grid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Peru;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.Grid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Peru;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Grid1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Grid1.EnableHeadersVisualStyles = false;
+            this.Grid1.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Grid1.Location = new System.Drawing.Point(58, 221);
             this.Grid1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Grid1.Name = "Grid1";
+            this.Grid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.Grid1.RowHeadersVisible = false;
             this.Grid1.RowHeadersWidth = 51;
             this.Grid1.RowTemplate.Height = 27;
-            this.Grid1.Size = new System.Drawing.Size(830, 426);
+            this.Grid1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Grid1.Size = new System.Drawing.Size(830, 381);
             this.Grid1.TabIndex = 2;
             // 
             // groupBox1
@@ -152,12 +177,24 @@ namespace Form_List
             this.txtItemName.Size = new System.Drawing.Size(100, 25);
             this.txtItemName.TabIndex = 4;
             // 
+            // btDelete
+            // 
+            this.btDelete.Location = new System.Drawing.Point(58, 639);
+            this.btDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btDelete.Name = "btDelete";
+            this.btDelete.Size = new System.Drawing.Size(75, 22);
+            this.btDelete.TabIndex = 9;
+            this.btDelete.Text = "삭제";
+            this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
+            // 
             // ItemMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(113)))), ((int)(((byte)(94)))));
             this.ClientSize = new System.Drawing.Size(950, 706);
+            this.Controls.Add(this.btDelete);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Grid1);
             this.Controls.Add(this.label1);
@@ -186,5 +223,6 @@ namespace Form_List
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btSearch;
         private System.Windows.Forms.TextBox txtItemName;
+        private System.Windows.Forms.Button btDelete;
     }
 }
