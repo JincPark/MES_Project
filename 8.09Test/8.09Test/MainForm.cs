@@ -79,8 +79,13 @@ namespace _8._09Test
             // 색상 초기화
             JAG.BackColor = Color.FromArgb(207, 202, 186);
             SANG.BackColor = Color.FromArgb(207, 202, 186);
+            BOM.BackColor = Color.FromArgb(207, 202, 186);
+            ItemMaster.BackColor = Color.FromArgb(207, 202, 186);
             JAG.ForeColor = Color.FromArgb(0, 0, 0);
             SANG.ForeColor = Color.FromArgb(0, 0, 0);
+            BOM.ForeColor = Color.FromArgb(0, 0, 0);
+            ItemMaster.ForeColor = Color.FromArgb(0, 0, 0);
+            
 
             // 누른 버튼 색상 변경
             btn.BackColor = Color.FromArgb(140, 113, 94);
