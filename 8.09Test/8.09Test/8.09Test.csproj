@@ -209,5 +209,11 @@
   <ItemGroup>
     <None Include="Resources\크기조절.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16up.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,8 +12,10 @@ using Assemble;
 
 namespace Form_List
 {
+
     public partial class ItemMaster : Form
     {
+
         private MySqlConnection Connect;  // 데이터베이스에 접속하는 정보를 관리하는 클래스.
 
         // 2. Select (조회)를 실행하여 데이터베이스에서 데이터를 받아오는 클래스.
@@ -30,6 +32,7 @@ namespace Form_List
 
         private void ItemMaster_Load(object sender, EventArgs e)
         {
+
 
             /*************************** 기본 그리드 내역 세팅 ******************************/
             DataTable dtGrid1 = new DataTable();

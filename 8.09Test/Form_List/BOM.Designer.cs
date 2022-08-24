@@ -33,26 +33,36 @@ namespace Form_List
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btAdd = new System.Windows.Forms.Button();
             this.Grid1 = new System.Windows.Forms.DataGridView();
             this.Grid2 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btSave = new System.Windows.Forms.Button();
+            this.btDelete = new System.Windows.Forms.Button();
+            this.cbItemName = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.Grid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grid2)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(50, 50);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(177, 45);
             this.label1.TabIndex = 0;
@@ -61,52 +71,31 @@ namespace Form_List
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(346, 122);
+            this.label2.Location = new System.Drawing.Point(77, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 15);
+            this.label2.Size = new System.Drawing.Size(67, 15);
             this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(509, 122);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(411, 122);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 25);
-            this.textBox1.TabIndex = 3;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(560, 122);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 25);
-            this.textBox2.TabIndex = 4;
+            this.label2.Text = "완제품명";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(741, 122);
+            this.button1.Location = new System.Drawing.Point(375, 75);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
+            this.button1.Text = "조회";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btAdd
             // 
-            this.button2.Location = new System.Drawing.Point(834, 122);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btAdd.Location = new System.Drawing.Point(895, 79);
+            this.btAdd.Name = "btAdd";
+            this.btAdd.Size = new System.Drawing.Size(75, 23);
+            this.btAdd.TabIndex = 6;
+            this.btAdd.Text = "추가";
+            this.btAdd.UseVisualStyleBackColor = true;
+            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // Grid1
             // 
@@ -114,35 +103,46 @@ namespace Form_List
             this.Grid1.AllowUserToDeleteRows = false;
             this.Grid1.AllowUserToResizeColumns = false;
             this.Grid1.AllowUserToResizeRows = false;
-            this.Grid1.BackgroundColor = System.Drawing.Color.MistyRose;
-            this.Grid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.Grid1.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Grid1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.Grid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Grid1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Grid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Grid1.GridColor = System.Drawing.Color.MistyRose;
-            this.Grid1.Location = new System.Drawing.Point(100, 250);
+            this.Grid1.Location = new System.Drawing.Point(0, 28);
+            this.Grid1.Margin = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.Grid1.Name = "Grid1";
             this.Grid1.ReadOnly = true;
             this.Grid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.MistyRose;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Moccasin;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.MistyRose;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Moccasin;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.Grid1.RowHeadersVisible = false;
             this.Grid1.RowHeadersWidth = 51;
             this.Grid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.Grid1.RowTemplate.Height = 27;
             this.Grid1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Grid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Grid1.Size = new System.Drawing.Size(750, 150);
+            this.Grid1.Size = new System.Drawing.Size(450, 609);
             this.Grid1.TabIndex = 7;
             this.Grid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid1_CellClick);
             // 
@@ -152,42 +152,56 @@ namespace Form_List
             this.Grid2.AllowUserToDeleteRows = false;
             this.Grid2.AllowUserToResizeColumns = false;
             this.Grid2.AllowUserToResizeRows = false;
-            this.Grid2.BackgroundColor = System.Drawing.Color.MistyRose;
-            this.Grid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Grid2.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Grid2.GridColor = System.Drawing.Color.MistyRose;
-            this.Grid2.Location = new System.Drawing.Point(100, 475);
-            this.Grid2.Name = "Grid2";
-            this.Grid2.ReadOnly = true;
-            this.Grid2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.MistyRose;
+            this.Grid2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Grid2.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Moccasin;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid2.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.Grid2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.Grid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Grid2.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Grid2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Grid2.GridColor = System.Drawing.Color.MistyRose;
+            this.Grid2.Location = new System.Drawing.Point(0, 28);
+            this.Grid2.MultiSelect = false;
+            this.Grid2.Name = "Grid2";
+            this.Grid2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.MistyRose;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Moccasin;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.Grid2.RowHeadersVisible = false;
             this.Grid2.RowHeadersWidth = 51;
             this.Grid2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Grid2.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.Grid2.RowTemplate.Height = 27;
             this.Grid2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Grid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Grid2.Size = new System.Drawing.Size(750, 150);
+            this.Grid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.Grid2.Size = new System.Drawing.Size(774, 609);
             this.Grid2.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
             this.label4.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(95, 215);
+            this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 28);
             this.label4.TabIndex = 9;
@@ -196,39 +210,111 @@ namespace Form_List
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
             this.label5.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(95, 440);
+            this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 28);
             this.label5.TabIndex = 10;
             this.label5.Text = "자재정보";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btSave);
+            this.panel1.Controls.Add(this.btDelete);
+            this.panel1.Controls.Add(this.cbItemName);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.btAdd);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(50, 50);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1283, 119);
+            this.panel1.TabIndex = 11;
+            // 
+            // btSave
+            // 
+            this.btSave.Location = new System.Drawing.Point(1143, 79);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(75, 23);
+            this.btSave.TabIndex = 9;
+            this.btSave.Text = "저장";
+            this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
+            // 
+            // btDelete
+            // 
+            this.btDelete.Location = new System.Drawing.Point(1024, 79);
+            this.btDelete.Name = "btDelete";
+            this.btDelete.Size = new System.Drawing.Size(75, 23);
+            this.btDelete.TabIndex = 8;
+            this.btDelete.Text = "삭제";
+            this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
+            // 
+            // cbItemName
+            // 
+            this.cbItemName.FormattingEnabled = true;
+            this.cbItemName.Location = new System.Drawing.Point(150, 76);
+            this.cbItemName.Name = "cbItemName";
+            this.cbItemName.Size = new System.Drawing.Size(210, 23);
+            this.cbItemName.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.Grid1);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(50, 169);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(450, 637);
+            this.panel2.TabIndex = 12;
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(500, 169);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(59, 637);
+            this.panel3.TabIndex = 13;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.Grid2);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(559, 169);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(774, 637);
+            this.panel4.TabIndex = 14;
+            // 
             // BOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(113)))), ((int)(((byte)(94)))));
-            this.ClientSize = new System.Drawing.Size(950, 706);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.Grid2);
-            this.Controls.Add(this.Grid1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(233)))), ((int)(((byte)(228)))));
+            this.ClientSize = new System.Drawing.Size(1383, 856);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(250, 70);
             this.Name = "BOM";
+            this.Padding = new System.Windows.Forms.Padding(50);
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.BOM_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Grid1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grid2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -236,14 +322,18 @@ namespace Form_List
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btAdd;
         private System.Windows.Forms.DataGridView Grid1;
         private System.Windows.Forms.DataGridView Grid2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ComboBox cbItemName;
+        private System.Windows.Forms.Button btSave;
+        private System.Windows.Forms.Button btDelete;
     }
 }

@@ -163,11 +163,6 @@ namespace Form_List
                 //dtTemp2
                 
 
-
-
-
-
-
                 foreach (DataGridViewRow row in Grid.Rows)
                 {
                     string checkRow = row.Cells[1].Value.ToString();
@@ -180,12 +175,12 @@ namespace Form_List
 
 
                     cmd.CommandText = "ItemMaster_Insert_01";
-                    cmd.Parameters.AddWithValue("TYP",     row.Cells[0].Value.ToString());
-                    cmd.Parameters.AddWithValue("COD",     row.Cells[1].Value.ToString());
+                    cmd.Parameters.AddWithValue("TYP",      row.Cells[0].Value.ToString());
+                    cmd.Parameters.AddWithValue("COD",      row.Cells[1].Value.ToString());
                     cmd.Parameters.AddWithValue("NAME",     row.Cells[2].Value.ToString());
-                    cmd.Parameters.AddWithValue("UNI",    row.Cells[3].Value.ToString());
-                    cmd.Parameters.AddWithValue("N",    row.Cells[4].Value.ToString());
-                    cmd.Parameters.AddWithValue("MAK",   Commons.cUserName);
+                    cmd.Parameters.AddWithValue("UNI",      row.Cells[3].Value.ToString());
+                    cmd.Parameters.AddWithValue("N",        row.Cells[4].Value.ToString());
+                    cmd.Parameters.AddWithValue("MAK",      Commons.cUserName);
 
                     //cmd.Parameters.AddWithValue("RS_CODE", "").Direction = ParameterDirection.Output;
 

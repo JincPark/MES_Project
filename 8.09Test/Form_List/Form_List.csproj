@@ -95,6 +95,12 @@
     <Compile Include="ItemMaster.Designer.cs">
       <DependentUpon>ItemMaster.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemMaster_POP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemMaster_POP.Designer.cs">
+      <DependentUpon>ItemMaster_POP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pop_WorkOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
   <ItemGroup>
     <EmbeddedResource Include="ItemMaster.resx">
       <DependentUpon>ItemMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemMaster_POP.resx">
+      <DependentUpon>ItemMaster_POP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pop_WorkOrder.resx">
       <DependentUpon>Pop_WorkOrder.cs</DependentUpon>
