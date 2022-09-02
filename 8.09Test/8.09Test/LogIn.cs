@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using Assemble;
 
 namespace _8._09Test
 {
     public partial class LogIn : Form
     {
-        private MySqlConnection Connect;  // 데이터베이스에 접속하는 정보를 관리하는 클래스.
+        private SqlConnection Connect;  // 데이터베이스에 접속하는 정보를 관리하는 클래스.
 
         // 2. Select (조회)를 실행하여 데이터베이스에서 데이터를 받아오는 클래스.
-        private MySqlDataAdapter Adapter;
+        private SqlDataAdapter Adapter;
 
         // 3. insert, update, delete 의 명령을 전달할 클래스.
-        private MySqlTransaction tran;    // 데이터베이스 데이터관리(승인, 복구) 권한 부여.
-        private MySqlCommand cmd;         // 데이터베이스에 Insert Update Delete 명령을 전달할 클래스.
+        private SqlTransaction tran;    // 데이터베이스 데이터관리(승인, 복구) 권한 부여.
+        private SqlCommand cmd;         // 데이터베이스에 Insert Update Delete 명령을 전달할 클래스.
 
         public LogIn()
         {
@@ -33,7 +33,7 @@ namespace _8._09Test
             DoLogIn();
         }
 
-        //사용자 ID와 PW 정보를 받아와 로그인 여부 결정 MySqlConnection 이용.
+        //사용자 ID와 PW 정보를 받아와 로그인 여부 결정 SqlConnection 이용.
         private void DoLogIn() //로그인 할 때 이 메소드 실행
         {
             //sql서버 데이터 베이스 불러오기  + DB 끊어주는 것도 같이 와야함. 
@@ -45,7 +45,7 @@ namespace _8._09Test
 
 
                 // 2. Connect 에 접속 경로 매핑.
-                Connect = new MySqlConnection(Commons.conn); // 어디 주소로 접속을 할지 가지고 있을 거임
+                Connect = new SqlConnection(Commons.conn); // 어디 주소로 접속을 할지 가지고 있을 거임
 
                 // 3. DB 연결 상태 확인.
                 Connect.Open();
@@ -63,7 +63,7 @@ namespace _8._09Test
                                       $" WHERE USERID = '{txtUserId.Text}'   ";
 
                 // 데이터 베이스에 SQL 구문 전달 후 반환되는 값 받아오기. 
-                MySqlDataAdapter Adapter = new MySqlDataAdapter(sFindUserImfo, Connect);
+                SqlDataAdapter Adapter = new SqlDataAdapter(sFindUserImfo, Connect);
 
                 // Adapter 실행 및 결과값 반환. -> 데이터가 들어 있으면 ID와 패스워드를 잘 입력함 
                 DataTable dtTemp = new DataTable();

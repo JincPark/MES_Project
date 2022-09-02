@@ -156,3 +156,4 @@ C:\Users\jin\Desktop\MES\MES_Project\8.09Test\8.09Test\obj\Debug\8.09Test.csproj
 C:\Users\jin\Desktop\MES\MES_Project\8.09Test\8.09Test\obj\Debug\8.09Test.csproj.CopyComplete
 C:\Users\jin\Desktop\MES\MES_Project\8.09Test\8.09Test\obj\Debug\8.09Test.exe
 C:\Users\jin\Desktop\MES\MES_Project\8.09Test\8.09Test\obj\Debug\8.09Test.pdb
+C:\Users\jin\Desktop\MES\MES_Project\8.09Test\8.09Test\bin\Debug\Assemble.dll

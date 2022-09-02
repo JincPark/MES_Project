@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Assemble;
+using System.Data.SqlClient;
 
 namespace Form_List
 {
@@ -16,14 +16,14 @@ namespace Form_List
     public partial class ItemMaster : Form
     {
 
-        private MySqlConnection Connect;  // 데이터베이스에 접속하는 정보를 관리하는 클래스.
+        private SqlConnection Connect;  // 데이터베이스에 접속하는 정보를 관리하는 클래스.
 
         // 2. Select (조회)를 실행하여 데이터베이스에서 데이터를 받아오는 클래스.
-        private MySqlDataAdapter Adapter;
+        private SqlDataAdapter Adapter;
 
         // 3. insert, update, delete 의 명령을 전달할 클래스.
-        private MySqlTransaction tran;    // 데이터베이스 데이터관리(승인, 복구) 권한 부여.
-        private MySqlCommand cmd;         // 데이터베이스에 Insert Update Delete 명령을 전달할 클래스.
+        private SqlTransaction tran;    // 데이터베이스 데이터관리(승인, 복구) 권한 부여.
+        private SqlCommand cmd;         // 데이터베이스에 Insert Update Delete 명령을 전달할 클래스.
 
         public ItemMaster()
         {
@@ -57,14 +57,14 @@ namespace Form_List
             Grid1.Columns[5].HeaderText = "등록자";
             Grid1.Columns[6].HeaderText = "등록일시";
 
-            // 컬럼의 폭 지정
-            Grid1.Columns[0].Width = 90;
-            Grid1.Columns[1].Width = 90;
-            Grid1.Columns[2].Width = 110;
-            Grid1.Columns[3].Width = 70;
-            Grid1.Columns[4].Width = 188;
-            Grid1.Columns[5].Width = 80;
-            Grid1.Columns[6].Width = 100;
+            //// 컬럼의 폭 지정
+            //Grid1.Columns[0].Width = 90;
+            //Grid1.Columns[1].Width = 90;
+            //Grid1.Columns[2].Width = 110;
+            //Grid1.Columns[3].Width = 70;
+            //Grid1.Columns[4].Width = 188;
+            //Grid1.Columns[5].Width = 80;
+            //Grid1.Columns[6].Width = 100;
 
             //// 콤보박스 값 초기화
             //cbItemType.DisplayMember = "Display";
@@ -105,15 +105,12 @@ namespace Form_List
                 // 사용자 정보 조회
 
                 // Adapter 에 SQL 프로시져 이름과 접속 정보 등록.
-                Adapter = new MySqlDataAdapter("ItemMaster_Select_01", Connect);
+                Adapter = new SqlDataAdapter("ItemMaster_Select_01", Connect);
                 Adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                Adapter.SelectCommand.Parameters.AddWithValue("Type", cbItemType.SelectedValue) ;
-                Adapter.SelectCommand.Parameters.AddWithValue("Code", cbItem.SelectedValue);
-                Adapter.SelectCommand.Parameters.AddWithValue("Name", txtItemName.Text);
+                Adapter.SelectCommand.Parameters.AddWithValue("@ItemType", cbItemType.SelectedValue) ;
+                Adapter.SelectCommand.Parameters.AddWithValue("@ItemCode", cbItem.SelectedValue);
+                Adapter.SelectCommand.Parameters.AddWithValue("@ItemName", txtItemName.Text);
 
-                //// 데이터베이스 처리 시 C#으로 반환할 값을 담는 변수.
-                //Adapter.SelectCommand.Parameters.AddWithValue("RS_CODE", "").Direction = ParameterDirection.Output;
-                //Adapter.SelectCommand.Parameters.AddWithValue("RS_MSG", "").Direction = ParameterDirection.Output;
 
                 // Adapter 실행.
                 DataTable dtTemp1 = new DataTable();
@@ -137,7 +134,7 @@ namespace Form_List
 
         public bool DBHelper(bool Tran)
         {
-            Connect = new MySqlConnection(Commons.conn);
+            Connect = new SqlConnection(Commons.conn);
             // 2. 데이터베이스 오픈
             Connect.Open();
 
@@ -157,30 +154,144 @@ namespace Form_List
 
         private void btCreate_Click(object sender, EventArgs e)
         {
-            ItemMaster_POP AddPop = new ItemMaster_POP();
-            AddPop.ShowDialog();
-            Inquire();
+            grid2_Inquire();
+            //DataRow dr = ((DataTable)Grid1.DataSource).NewRow();
+            //((DataTable)Grid1.DataSource).Rows.Add(dr);
+            ////ItemMaster_POP AddPop = new ItemMaster_POP();
+            ////AddPop.ShowDialog();
+            ////Inquire();
         }
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            if (!DBHelper(true)) return;
-            cmd = new MySqlCommand
+            if (Grid1.Rows.Count == 0) return;
+            int iSelectRowIndex = Grid1.CurrentRow.Index;
+            DataTable dtTemp = (DataTable)Grid1.DataSource;
+            string sItemCode = Convert.ToString(Grid1.Rows[iSelectRowIndex].Cells["ItemCode"].Value);
+            for (int i = 0; i < dtTemp.Rows.Count; i++)
             {
-                Transaction = tran,
-                Connection = Connect,
-                CommandType = CommandType.StoredProcedure
-            };
+                if (dtTemp.Rows[i].RowState == DataRowState.Deleted) continue;
+                if (sItemCode == Convert.ToString(dtTemp.Rows[i]["ItemCode"])) dtTemp.Rows[i].Delete();
+            }
+
+        }
+        private void cbItem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Inquire();
+            }
+        }
+
+        private void cbItemType_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Inquire();
+            }
+        }
+
+        private void txtItemName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Inquire();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!DBHelper(true)) return;
+            // 2. Insert Update Delete 전달 SqlCommand 클래스 객체 생성.
+            cmd = new SqlCommand();
+            // 3. 생성한 트랜잭션 등록
+            cmd.Transaction = tran;
+            // 4. 데이터베이스 접속 경로 연결
+            cmd.Connection = Connect;
+            // 5. 프로시져형태로 호출함을 선언.
+            cmd.CommandType = CommandType.StoredProcedure;
+
+
+            string sMessage = string.Empty;
             try
             {
+                // 그리드조회 후 변경된 행의 정보만 추출.
+                DataTable dtChange = ((DataTable)Grid1.DataSource).GetChanges();
+                if (dtChange == null) return;
 
-            cmd.CommandText = "ItemMaster_Delete_01";
-                cmd.Parameters.AddWithValue("PCODE", Grid1.CurrentRow.Cells[1].Value.ToString()) ;
-            cmd.ExecuteNonQuery();
-            cmd.Parameters.Clear();
-            tran.Commit();
+                // 변경된 그리드의 데이터 추출 내역 중 상위로부터 하나의 행씩 뽑아온다.
+                foreach (DataRow drrow in dtChange.Rows)
+                {
+                    switch (drrow.RowState)
+                    {
+                        case DataRowState.Deleted:
+                            drrow.RejectChanges();
+
+                            
+                            cmd.CommandText = "ItemMaster_Delete_01";
+                            cmd.Parameters.AddWithValue("@ItemCode", drrow["ItemCode"]);
+
+                            cmd.Parameters.AddWithValue("RS_CODE", "").Direction = ParameterDirection.Output;
+                            cmd.Parameters.AddWithValue("RS_MSG", "").Direction = ParameterDirection.Output;
+
+
+                            cmd.ExecuteNonQuery();
+                            break;
+                        //case DataRowState.Modified:
+                        //    // 사용자 정보가 수정된 상태이면.
+                        //    if (Convert.ToString(drrow["USERID"]) == "") sMessage += "사용자ID ";
+                        //    if (Convert.ToString(drrow["USERNAME"]) == "") sMessage += "사용자명 ";
+                        //    if (Convert.ToString(drrow["PW"]) == "") sMessage += "비밀번호 ";
+                        //    if (sMessage != "")
+                        //    {
+                        //        throw new Exception($"필수 정보({sMessage}를 입력하지 않았습니다.");
+                        //    }
+
+                        //    // 사용자 정보를 변경하는 저장 프로시져 호출
+                        //    cmd.CommandText = "BM_UserMaster_U";
+                        //    cmd.Parameters.AddWithValue("USERID", drrow["USERID"]);
+                        //    cmd.Parameters.AddWithValue("USERNAME", drrow["USERNAME"]);
+                        //    cmd.Parameters.AddWithValue("PASSWORD", drrow["PW"]);
+                        //    cmd.Parameters.AddWithValue("DEPTCODE", drrow["DEPTCODE"]);
+                        //    cmd.Parameters.AddWithValue("EDITOR", Commons.cLogInId);
+                        //    cmd.Parameters.AddWithValue("LANG", "KO");
+                        //    cmd.Parameters.AddWithValue("RS_CODE", "").Direction = ParameterDirection.Output;
+                        //    cmd.Parameters.AddWithValue("RS_MSG", "").Direction = ParameterDirection.Output;
+
+                        //    cmd.ExecuteNonQuery();
+                        //    break;
+                        case DataRowState.Added:
+
+
+                            cmd.CommandText = "ItemMaster_Insert_01";
+                            cmd.Parameters.AddWithValue("@ItemType", drrow["ItemType"]);
+                            cmd.Parameters.AddWithValue("@ItemCode", drrow["ItemCode"]);
+                            cmd.Parameters.AddWithValue("@ItemName", drrow["ItemName"]);
+                            cmd.Parameters.AddWithValue("@Unit",     drrow["Unit"]);
+                            cmd.Parameters.AddWithValue("@Note",     drrow["Note"]);
+                            cmd.Parameters.AddWithValue("@Maker", Commons.cUserName);
+
+                            cmd.Parameters.AddWithValue("RS_CODE", "").Direction = ParameterDirection.Output;
+                            cmd.Parameters.AddWithValue("RS_MSG", "").Direction = ParameterDirection.Output;
+
+                            cmd.ExecuteNonQuery();
+
+
+
+                            break;
+
+                    }
+                    if (Convert.ToString(cmd.Parameters["RS_CODE"].Value) != "S")
+                    {
+                        throw new Exception("품목 정보 등록 중 오류가 발생하였습니다.");
+                    }
+                    cmd.Parameters.Clear();
+                }
+                tran.Commit();
+                MessageBox.Show("정상적으로 등록되었습니다.");
+                Inquire();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 tran.Rollback();
                 MessageBox.Show(ex.ToString());
@@ -189,8 +300,79 @@ namespace Form_List
             {
                 Connect.Close();
             }
-            Inquire();
+
+
         }
+
+
+        private void grid2_Inquire()
+        {
+            // 그리드에 행 추가
+            DataRow Drrow = ((DataTable)Grid1.DataSource).NewRow();
+            ((DataTable)Grid1.DataSource).Rows.Add(Drrow);
+
+            // 그리드 타입과 유닛에 콤보박스 추가
+            DataGridViewComboBoxCell cCell = new DataGridViewComboBoxCell();
+            DataGridViewComboBoxCell cCell1 = new DataGridViewComboBoxCell();
+            cCell.DisplayStyle = DataGridViewComboBoxDisplayStyle.ComboBox;
+            cCell1.DisplayStyle = DataGridViewComboBoxDisplayStyle.ComboBox;
+
+
+            // 데이터 베이스 접속
+            if (DBHelper(false) == false) return;
+
+            try
+            {
+                DataTable dtTemp = new DataTable();
+                DataTable dtTemp1 = new DataTable();
+
+
+                // Adapter 에 SQL 프로시져 이름과 접속 정보 등록.
+                Adapter = new SqlDataAdapter("ItemMaster_Combo_Type", Connect);
+                Adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                Adapter.Fill(dtTemp);
+                // Adapter 에 SQL 프로시져 이름과 접속 정보 등록.
+                Adapter = new SqlDataAdapter("ItemMaster_Combo_Unit", Connect);
+                Adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                Adapter.Fill(dtTemp1);
+
+                // Adapter 실행.             
+
+                // 그리드 콤보박스 등록하기
+
+                if (dtTemp.Rows.Count == 0) return;
+                if (dtTemp1.Rows.Count == 0) return;
+
+                // 콤보박스에 데이터 등록
+                cCell.DataSource = dtTemp;
+                cCell1.DataSource = dtTemp1;
+
+                // 프로시져를 통해 콤보박스에 보여지는 값
+                cCell.DisplayMember = "VL";
+                cCell1.DisplayMember = "VL";
+
+                // 콤보박스에 실제 들어있는 값 
+                cCell.ValueMember = "VL";
+                cCell1.ValueMember = "VL";
+
+
+                // 추가한 열 위치의 품번 셀에 생성한 콤보박스 값 넣기
+                Grid1.Rows[Grid1.Rows.Count - 1].Cells["ItemType"] = cCell;
+                Grid1.Rows[Grid1.Rows.Count - 1].Cells["Unit"] = cCell1;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                Connect.Close();
+            }
+        }
+
+        
     }
     
 }

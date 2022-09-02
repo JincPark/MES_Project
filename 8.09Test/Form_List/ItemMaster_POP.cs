@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Assemble;
-using MySql.Data.MySqlClient;
 
 
 namespace Form_List
@@ -17,14 +17,14 @@ namespace Form_List
     public partial class ItemMaster_POP : Form
     {
         // 1. 공통 클래스(데이터베이스 커넥터)
-        private MySqlConnection Connect;  // 데이터베이스에 접속하는 정보를 관리하는 클래스.
+        private SqlConnection Connect;  // 데이터베이스에 접속하는 정보를 관리하는 클래스.
 
         // 2. Select (조회)를 실행하여 데이터베이스에서 데이터를 받아오는 클래스.
-        private MySqlDataAdapter Adapter;
+        private SqlDataAdapter Adapter;
 
         // 3. insert, update, delete 의 명령을 전달할 클래스.
-        private MySqlTransaction tran;    // 데이터베이스 데이터관리(승인, 복구) 권한 부여.
-        private MySqlCommand cmd;         // 데이터베이스에 Insert Update Delete 명령을 전달할 클래스.
+        private SqlTransaction tran;    // 데이터베이스 데이터관리(승인, 복구) 권한 부여.
+        private SqlCommand cmd;         // 데이터베이스에 Insert Update Delete 명령을 전달할 클래스.
 
         bool On;
         Point Pos;
@@ -141,7 +141,7 @@ namespace Form_List
             // 1. 데이터베이스 접속
             if (!DBHelper(true)) return;
             // 2. Insert Update Delete 전달 SqlCommand 클래스 객체 생성.
-            cmd = new MySqlCommand();
+            cmd = new SqlCommand();
             // 3. 생성한 트랜잭션 등록
             cmd.Transaction = tran;
             // 4. 데이터베이스 접속 경로 연결
@@ -154,14 +154,11 @@ namespace Form_List
                 if (Grid.Rows.Count == 0) return;
 
                 // Adapter 에 SQL 프로시져 이름과 접속 정보 등록.
-                Adapter = new MySqlDataAdapter("ItemMaster_Select_02_Check", Connect);
+                Adapter = new SqlDataAdapter("ItemMaster_Select_02_Check", Connect);
                 Adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-
                 //Adapter 실행.
                 DataTable dtTemp2 = new DataTable();
                 Adapter.Fill(dtTemp2);
-                //dtTemp2
-                
 
                 foreach (DataGridViewRow row in Grid.Rows)
                 {
@@ -175,12 +172,12 @@ namespace Form_List
 
 
                     cmd.CommandText = "ItemMaster_Insert_01";
-                    cmd.Parameters.AddWithValue("TYP",      row.Cells[0].Value.ToString());
-                    cmd.Parameters.AddWithValue("COD",      row.Cells[1].Value.ToString());
-                    cmd.Parameters.AddWithValue("NAME",     row.Cells[2].Value.ToString());
-                    cmd.Parameters.AddWithValue("UNI",      row.Cells[3].Value.ToString());
-                    cmd.Parameters.AddWithValue("N",        row.Cells[4].Value.ToString());
-                    cmd.Parameters.AddWithValue("MAK",      Commons.cUserName);
+                    cmd.Parameters.AddWithValue("@ItemType",      row.Cells[0].Value.ToString());
+                    cmd.Parameters.AddWithValue("@ItemCode",      row.Cells[1].Value.ToString());
+                    cmd.Parameters.AddWithValue("@ItemName",     row.Cells[2].Value.ToString());
+                    cmd.Parameters.AddWithValue("@Unit",      row.Cells[3].Value.ToString());
+                    cmd.Parameters.AddWithValue("@Note",        row.Cells[4].Value.ToString());
+                    cmd.Parameters.AddWithValue("@Maker",      Commons.cUserName);
 
                     //cmd.Parameters.AddWithValue("RS_CODE", "").Direction = ParameterDirection.Output;
 
@@ -228,7 +225,7 @@ namespace Form_List
         //}
         public bool DBHelper(bool Tran)
         {
-            Connect = new MySqlConnection(Commons.conn);
+            Connect = new SqlConnection(Commons.conn);
             // 2. 데이터베이스 오픈
             Connect.Open();
 

@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assemble">
+    <Reference Include="Assemble, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Assemble\bin\Debug\Assemble.dll</HintPath>
     </Reference>
     <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
@@ -95,6 +96,12 @@
     <Compile Include="ItemMaster.Designer.cs">
       <DependentUpon>ItemMaster.cs</DependentUpon>
     </Compile>
+    <Compile Include="BOM_POP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BOM_POP.Designer.cs">
+      <DependentUpon>BOM_POP.cs</DependentUpon>
+    </Compile>
     <Compile Include="ItemMaster_POP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,17 +114,16 @@
     <Compile Include="Pop_WorkOrder.designer.cs">
       <DependentUpon>Pop_WorkOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SANG.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SANG.Designer.cs">
       <DependentUpon>SANG.cs</DependentUpon>
-    </Compile>
-    <Compile Include="JAG.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="JAG.Designer.cs">
-      <DependentUpon>JAG.cs</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="BOM.cs">
@@ -127,10 +133,19 @@
       <DependentUpon>BOM.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkOrder.Designer.cs">
+      <DependentUpon>WorkOrder.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ItemMaster.resx">
       <DependentUpon>ItemMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BOM_POP.resx">
+      <DependentUpon>BOM_POP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemMaster_POP.resx">
       <DependentUpon>ItemMaster_POP.cs</DependentUpon>
@@ -138,19 +153,170 @@
     <EmbeddedResource Include="Pop_WorkOrder.resx">
       <DependentUpon>Pop_WorkOrder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SANG.resx">
       <DependentUpon>SANG.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="JAG.resx">
-      <DependentUpon>JAG.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BOM.resx">
       <DependentUpon>BOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkOrder.resx">
+      <DependentUpon>WorkOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\24down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\24up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btCreate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btCreate32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btDelete32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btDelete64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btsave32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btSearch32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\company.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-almond-2224240.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-alter-5635910.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-boxes-2250265.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-company-4091516.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-enterprise-1692484.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-finger-of-a-hand-pointing-to-right-direction-25628.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-handshake-1786971.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-home-263115.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-settings-545754 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-settings-545754.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-stack-of-square-papers-29835.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-stock-6133323.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-switch-off-7782713 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-user-1177568.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-user-8214212.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-warehouse-6135229.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-boxes-1044182.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-boxes-1044183.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-company-2967867.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-empty-folder-2739782.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-homework-1171932.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-open-folder-2492490.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-planning-5341573.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-production-3052479.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-profile-4675250.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-user-3329457.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\premium-icon-warehouse-3061153.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\set.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\USERinfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\USERNAME.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -194,28 +194,48 @@ namespace _8._09Test
             OpenForm((Button)sender);
         }
 
-        private void pnForm_Resize(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)  // 현재 열린 Form_List를 닫아 줄 것임. 
         {
-            ////////testNo++;
-            //label1.Text = Convert.ToString(pnForm.Size);
-            //////// 1. 클릭한 메뉴의 CS 이름. 
-            //string sCmenuName = ItemMaster.Name.ToString();
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                if (Application.OpenForms[i].Name != "MainForm")
+                    Application.OpenForms[i].Close();
+            }
+        }
 
-            //for (int i = 0; i < pnForm.Controls.Count; i++)
-            //{
-            //    // 2. 오픈되어있는 페이지의 이름.
-            //    string openedName = pnForm.Controls[i].Name.ToString();
+        private void button2_Click(object sender, EventArgs e)  // 홈 버튼 구현
+        {
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                if (Application.OpenForms[i].Name != "MainForm")
+                    Application.OpenForms[i].Close();
+            }
+        }
 
-            //    if (sCmenuName.Equals(openedName))
-            //    {
-            //        pnForm.Controls[i].Size = new Size(pnForm.Size.Width, pnForm.Size.Height);
-            //        return;
-            //    }
-            //}
-            ////foreach (Form c in this.MdiChildren)
-            ////{
-            ////    c.Size = new Size(pnForm.Size.Width, pnForm.Size.Height);
-            ////}
+        private void timer1_Tick(object sender, EventArgs e)  // 시간 나타내기
+        {
+            stsNowDateTime.Text = System.DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초");
+        }
+
+        private void FormName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 3; ++i)
+            {
+                Form f = new Form();
+                f.Activated += f_Activated;
+                f.MdiParent = this;
+                f.Text = "Form #" + i.ToString();
+                f.Show();
+            }
+
+            //if (Application.OpenForms.Count == 0) return;
+            //stsFormName.Text = form 
+        }
+
+
+        void f_Activated(object sender, EventArgs e)
+        {
+            stsFormName.Text = ((Form)sender).Text;
         }
     }
 }

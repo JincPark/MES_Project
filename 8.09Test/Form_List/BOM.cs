@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using Assemble;
 using System.Data.SqlClient;
 
@@ -15,14 +14,14 @@ namespace Form_List
 {
     public partial class BOM : Form
     {
-        private MySqlConnection Connect;  // 데이터베이스에 접속하는 정보를 관리하는 클래스.
+        private SqlConnection Connect;  // 데이터베이스에 접속하는 정보를 관리하는 클래스.
 
         // 2. Select (조회)를 실행하여 데이터베이스에서 데이터를 받아오는 클래스.
-        private MySqlDataAdapter Adapter;
+        private SqlDataAdapter Adapter;
 
         // 3. insert, update, delete 의 명령을 전달할 클래스.
-        private MySqlTransaction tran;    // 데이터베이스 데이터관리(승인, 복구) 권한 부여.
-        private MySqlCommand cmd;         // 데이터베이스에 Insert Update Delete 명령을 전달할 클래스.
+        private SqlTransaction tran;    // 데이터베이스 데이터관리(승인, 복구) 권한 부여.
+        private SqlCommand cmd;         // 데이터베이스에 Insert Update Delete 명령을 전달할 클래스.
 
         public BOM()
         {
@@ -60,6 +59,8 @@ namespace Form_List
             Grid2.Columns[3].HeaderText = "자재단위";
             Grid2.Columns[4].HeaderText = "비고";
 
+            //Grid1.Columns[4].Visible = false;
+
             //// 컬럼의 폭 지정
             Grid1.Columns[0].Width = 90;
             Grid1.Columns[1].Width = 110;
@@ -79,7 +80,7 @@ namespace Form_List
 
             try
             {
-                Adapter = new MySqlDataAdapter("BOM_COMBO_Select_01", Connect);
+                Adapter = new SqlDataAdapter("BOM_COMBO_Select_01", Connect);
                 Adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                 // Adapter 실행.
                 DataTable dtTemp0 = new DataTable();
@@ -124,11 +125,11 @@ namespace Form_List
                 // 사용자 정보 조회
 
                 // Adapter 에 SQL 프로시져 이름과 접속 정보 등록.
-                //Adapter = new MySqlDataAdapter("BM_BOM_S1", Connect);
-                Adapter = new MySqlDataAdapter("BOM_Select_01", Connect);
+                //Adapter = new SqlDataAdapter("BM_BOM_S1", Connect);
+                Adapter = new SqlDataAdapter("BOM_Select_01", Connect);
                 Adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
-                Adapter.SelectCommand.Parameters.AddWithValue("ICODE", Convert.ToString(cbItemName.SelectedValue));
+                Adapter.SelectCommand.Parameters.AddWithValue("@ICODE", Convert.ToString(cbItemName.SelectedValue));
                 //// 데이터베이스 처리 시 C#으로 반환할 값을 담는 변수.
                 //Adapter.SelectCommand.Parameters.AddWithValue("RS_CODE", "").Direction = ParameterDirection.Output;
                 //Adapter.SelectCommand.Parameters.AddWithValue("RS_MSG", "").Direction = ParameterDirection.Output;
@@ -155,7 +156,7 @@ namespace Form_List
 
         public bool DBHelper(bool Tran)
         {
-            Connect = new MySqlConnection(Commons.conn);
+            Connect = new SqlConnection(Commons.conn);
             // 2. 데이터베이스 오픈
             Connect.Open();
 
@@ -170,38 +171,7 @@ namespace Form_List
 
         private void Grid1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //((DataTable)Grid2.DataSource).Rows.Clear();
-            string Pacode = Grid1.CurrentRow.Cells[0].Value.ToString();
-            if (!DBHelper(false)) return;
-
-            try
-            {
-                // Adapter 에 SQL 프로시져 이름과 접속 정보 등록.
-                Adapter = new MySqlDataAdapter("BOM_Select_02", Connect);
-                Adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-
-                Adapter.SelectCommand.Parameters.AddWithValue("ICODE", Pacode);
-
-                //Adapter.SelectCommand.Parameters.AddWithValue("LANG", "KO");
-                //// 데이터베이스 처리 시 C#으로 반환할 값을 담는 변수.
-                //Adapter.SelectCommand.Parameters.AddWithValue("RS_CODE", "").Direction = ParameterDirection.Output;
-                //Adapter.SelectCommand.Parameters.AddWithValue("RS_MSG", "").Direction = ParameterDirection.Output;
-
-                // Adapter 실행.
-                DataTable dtTemp2 = new DataTable();
-                Adapter.Fill(dtTemp2);
-                // 결과값을 그리드뷰에 표현.
-                Grid2.DataSource = dtTemp2;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                Connect.Close();
-            }
+            grid2_Inquire();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -211,8 +181,12 @@ namespace Form_List
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            DataRow dr = ((DataTable)Grid2.DataSource).NewRow();
-            ((DataTable)Grid2.DataSource).Rows.Add(dr);
+            BOM_POP AddPop = new BOM_POP();
+            AddPop.ShowDialog();
+            Inquire();
+
+            //((DataTable)Grid2.DataSource).Rows.Clear();
+            grid2_Inquire();
         }
 
         private void btDelete_Click(object sender, EventArgs e)
@@ -239,7 +213,7 @@ namespace Form_List
             // 1. 데이터베이스 접속
             if (!DBHelper(true)) return;
             // 2. Insert Update Delete 전달 SqlCommand 클래스 객체 생성.
-            cmd = new MySqlCommand();
+            cmd = new SqlCommand();
             // 3. 생성한 트랜잭션 등록
             cmd.Transaction = tran;
             // 4. 데이터베이스 접속 경로 연결
@@ -266,29 +240,12 @@ namespace Form_List
                             drrow.RejectChanges();
                             // 사용자 정보를 삭제하는 저장 프로시져 호출
                             cmd.CommandText = "BOM_Delete_01";
-                            cmd.Parameters.AddWithValue("pco", Convert.ToString(Grid1.CurrentRow.Cells["icode"].Value));
-                            cmd.Parameters.AddWithValue("mco", drrow["mcode"]);
+                            cmd.Parameters.AddWithValue("@PCode", Convert.ToString(Grid1.CurrentRow.Cells["icode"].Value));
+                            cmd.Parameters.AddWithValue("@MCode", drrow["mcode"]);
 
 
                             cmd.ExecuteNonQuery();
                             break;
-                        case DataRowState.Added:
-                            if (Convert.ToString(drrow["mcode"]) == "") sMessage += "자재코드 ";
-                            if (Convert.ToString(drrow["CQTY"]) == "") sMessage += "정미수량 ";
-                            if (sMessage != "")
-                            {
-                                throw new Exception($"필수 정보({sMessage})을/를 입력하지 않았습니다.");
-                            }
-                            cmd.CommandText = "BOM_Insert_01";
-                            cmd.Parameters.AddWithValue("pco", Convert.ToString(Grid1.CurrentRow.Cells["icode"].Value));
-                            cmd.Parameters.AddWithValue("mco", drrow["mcode"]);
-                            cmd.Parameters.AddWithValue("QT", drrow["CQTY"]);
-                            cmd.Parameters.AddWithValue("No", drrow["mbi"]);
-
-                            cmd.ExecuteNonQuery();
-
-                            break;
-
                     }
                     
                     cmd.Parameters.Clear();
@@ -308,29 +265,31 @@ namespace Form_List
             }
         }
 
-        private void DGV_ComboBox()
-        {
-            DataGridViewComboBoxCell cbcell = new DataGridViewComboBoxCell();
-            cbcell.DisplayStyle = DataGridViewComboBoxDisplayStyle.ComboBox;
 
+        private void grid2_Inquire()
+        {
+            //((DataTable)Grid2.DataSource).Rows.Clear();
+            string Pacode = Grid1.CurrentRow.Cells[0].Value.ToString();
             if (!DBHelper(false)) return;
 
             try
             {
-                Adapter = new MySqlDataAdapter("BOM_GRIDVIEW_COMBO_Select_01", Connect);
+                // Adapter 에 SQL 프로시져 이름과 접속 정보 등록.
+                Adapter = new SqlDataAdapter("BOM_Select_02", Connect);
                 Adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                Adapter.SelectCommand.Parameters.AddWithValue("@ICODE", Pacode);
+
+                Adapter.SelectCommand.Parameters.AddWithValue("LANG", "KO");
+                // 데이터베이스 처리 시 C#으로 반환할 값을 담는 변수.
+                Adapter.SelectCommand.Parameters.AddWithValue("RS_CODE", "").Direction = ParameterDirection.Output;
+                Adapter.SelectCommand.Parameters.AddWithValue("RS_MSG", "").Direction = ParameterDirection.Output;
+
                 // Adapter 실행.
-                DataTable dtTemp4 = new DataTable();
-                Adapter.Fill(dtTemp4);
+                DataTable dtTemp2 = new DataTable();
+                Adapter.Fill(dtTemp2);
                 // 결과값을 그리드뷰에 표현.
-                cbcell.DataSource = dtTemp4;
-
-                cbcell.ValueMember = "VL";
-                cbcell.DisplayMember = "DP";
-                Grid2.CurrentRow.Cells["mcode"] = cbcell;
-
-
-
+                Grid2.DataSource = dtTemp2;
 
             }
             catch (Exception ex)

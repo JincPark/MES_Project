@@ -7,21 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using Assemble;
+using System.Data.SqlClient;
 
 namespace Form_List
 {
     public partial class Pop_WorkOrder : Form
     {
 
-        private MySqlConnection Connect;  // 데이터베이스에 접속하는 정보를 관리하는 클래스.
+        private SqlConnection Connect;  // 데이터베이스에 접속하는 정보를 관리하는 클래스.
 
         // 2. Select (조회)를 실행하여 데이터베이스에서 데이터를 받아오는 클래스.
-        private MySqlDataAdapter Adapter;
+        private SqlDataAdapter Adapter;
 
         // 3. insert, update, delete 의 명령을 전달할 클래스.
-        private MySqlTransaction tran;    // 데이터베이스 데이터관리(승인, 복구) 권한 부여.
+        private SqlTransaction tran;    // 데이터베이스 데이터관리(승인, 복구) 권한 부여.
 
 
         private Point mousePoint;
@@ -100,7 +100,7 @@ namespace Form_List
                 // 사용자 정보 조회
 
                 // Adapter 에 SQL 프로시져 이름과 접속 정보 등록.
-                Adapter = new MySqlDataAdapter("BM_ITEM_S", Connect);
+                Adapter = new SqlDataAdapter("BM_ITEM_S", Connect);
                 Adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
                 Adapter.SelectCommand.Parameters.AddWithValue("ItemType","FERT");
@@ -129,7 +129,7 @@ namespace Form_List
 
         public bool DBHelper(bool Tran)
         {
-            Connect = new MySqlConnection(Commons.conn);
+            Connect = new SqlConnection(Commons.conn);
             // 2. 데이터베이스 오픈
             Connect.Open();
 
